@@ -5,3 +5,12 @@ export const fetchPosts = () => async dispatch => {
 
   dispatch({ type: "FETCH_POSTS", payload: response.data });
 };
+
+// fetching one user at a time
+export const fetchUser = id => {
+  return async dispatch => {
+    const response = await jsonPlaceholder.get(`/users/${id}`);
+
+    dispatch({ type: "FETCH_USER", payload: response.data });
+  };
+};
