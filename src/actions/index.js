@@ -16,6 +16,13 @@ export const fetchPostsAndUsers = () => async (dispatch, getState) => {
 
   // loopeamos sobre cada user id y llamamos al action creator adecuado para cada user id
   userIds.forEach(id => dispatch(fetchUser(id)));
+
+  // Posible refactoring using the _.chain() function helper from lodash
+  // _.chain(getState().posts)
+  //   .map("userId")
+  //   .uniq()
+  //   .forEach(id => dispatch(fetchUser(id)))
+  //   .value(); // Lodash no ejecuta todos los pasos sino se pone esta funcion al final
 };
 
 // solution to overfecthing #1 using _.memoize function from lodash
